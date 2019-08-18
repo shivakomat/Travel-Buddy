@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Travel Buddy Trip Items Manager</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous"/>
+    <link rel="stylesheet" type="text/css" href="popup.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="form_content.css" media="screen" />
+    <script type="text/javascript" src-elem="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src-elem="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.8/angular.min.js"></script>
+    <script src="popup.js"></script>
+  </head>
+
+  <body>
+    <div class="modal-header">
+      <h1 class="logo">
+        <img class="logo-icon" src="images/traversy-logo.png" /> Travel Buddy (+)
+      </h1>
+    </div>
+    <div class="modal-content" ng-app="travelBuddyChromeExtensionApp" ng-strict-di>
+      <div class="form-style-5" ng-controller="UserBucketController">
+        <form>
+          <fieldset>
+            <legend><span class="number">1</span> Pick a bucket</legend>
+            <select ng-options="bucket.name for bucket in buckets">
+<!--              <optgroup label="Select Bucket"></optgroup>-->
+<!--            </select>-->
+                <option value="food places">Food Places To Checkout</option>
+                <option value="main tourist attraction points">Main Tourist Attraction Points</option>
+                <option value="must do things">Must Do Things</option>
+                <option value="air bnb spots">Air Bnb Spots</option>
+                <option value="other interesting things">Other Interesting Things</option>
+<!--              </optgroup>-->
+            </select>
+            <legend><span class="number">2</span> Add a trip item</legend>
+            <input type="text" name="field1" placeholder="Name *">
+            <input type="email" name="field2" placeholder="Share link*">
+            <textarea name="field3" placeholder="A little note to yourself"></textarea>
+          </fieldset>
+          <input type="submit" value="SUBMIT"/>
+        </form>
+      </div>
+    </div>
+    <div class="modal-icons">
+      <div class="flex-container">
+        <div class="flex">
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
