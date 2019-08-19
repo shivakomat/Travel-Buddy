@@ -45,7 +45,7 @@
     color:#8a97a0;
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 .form-style-5 input[type="text"]:focus,
 .form-style-5 input[type="date"]:focus,
@@ -86,10 +86,10 @@
     color: #FFF;
     margin: 0 auto;
     background: #1abc9c;
-    font-size: 18px;
+    font-size: 16px;
     text-align: center;
     font-style: normal;
-    width: 100%;
+    width: 80%;
     border: 1px solid #16a085;
     border-width: 1px 1px 3px;
     margin-bottom: 10px;
