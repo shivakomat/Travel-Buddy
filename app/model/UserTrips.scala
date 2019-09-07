@@ -14,13 +14,37 @@ object UserTripsAPI {
     UserTrips(userId, trips, tripPlaces, buckets, bucketItems)
   }
 
+  def createTrip(trip: Trip, tripPlaces: Seq[TripPlace]): UserTrips = {
+    Trips add(trip)
+    tripPlaces foreach TripPlaces.add
+    byUser(trip.userId)
+  }
+
+
+  def createTripPlace(userId: Int, tripPlace: TripPlace): UserTrips = {
+    TripPlaces.add(tripPlace)
+    byUser(userId)
+  }
+
+
+  def createBucket(userId: Int, newBucket: Bucket): UserTrips = {
+    Buckets.add(newBucket)
+    byUser(userId)
+  }
+
+
+  def createBucketItem(userId: Int, bucketItem: BucketItem): UserTrips = {
+    BucketItems.add(bucketItem)
+    byUser(userId)
+  }
+
 }
 
 
-object TestData  {
+object TestData {
 
   Trips
-    .add(Trip(id = 1, name = "Euro Trip 2019", userId = 1, description = "My 2019 Euro Trip"))
+    .add(Trip(id = 1, name = "Euro Trip 2019", userId = 1, description = "My 2019 Euro Trip", startDate = "", endDate = "", budget = 0))
 
   TripPlaces
     .add(TripPlace(id = 1, name = "Barcelona", tripId = 1))

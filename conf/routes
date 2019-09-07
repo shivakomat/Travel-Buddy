@@ -5,6 +5,14 @@
 
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
+GET     /my-trips                   controllers.HomeController.memberPortalPage
+GET     /my-bucket-items               controllers.HomeController.myBucketItems
+
+GET     /create-bucket-item         controllers.HomeController.createBucketItem
+GET     /create-trip                controllers.HomeController.createTrip
+
+
+
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
 # An example controller showing how to write asynchronous code

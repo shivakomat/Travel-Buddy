@@ -3,11 +3,13 @@ package model
 case class User(id: Int, username: String, password: String, email: String,
                 travelNickname: String, hometown: String, birthDate: Int, numberOfCountriesVisited: Int)
 
-case class Trip(id: Int, name: String, description: String, userId: Int)
+case class Trip(id: Int, name: String, description: String, budget: Double, startDate: String, endDate: String, userId: Int)
 case class TripPlace(id: Int, name: String, tripId: Int)
 
 case class Bucket(id: Int, name: String, tripPlaceId: Int)
-case class BucketItem(id: Int, bucketId: Int, itemName: String, itemSharableLink: String, itemNote: String)
+case class BucketItem(id: Int, bucketId: Int, itemName: String, itemSharableLink: String,
+                      itemNote: String, itemType: String = "", price: Double = 0.00, fromPlace: String = "",
+                      toPlace: String = "", hotelType: String = "", cuisineType: String = "", company: String = "")
 
 
 object Database {

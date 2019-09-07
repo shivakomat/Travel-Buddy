@@ -20,4 +20,21 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     Ok(views.html.index("Your new application is ready."))
   }
 
+  def memberPortalPage = Action {
+    Ok(views.html.myTrips("Your new application is ready."))
+  }
+
+
+  def myBucketItems = Action {
+    Ok(views.html.myBucketItems("Your new application is ready."))
+  }
+
+  def createBucketItem = Action {
+    Ok(views.html.createNewBucketItem("Your new application is ready."))
+  }
+
+  def createTrip = Action {
+    Ok(views.html.createNewTrip("Your new application is ready."))
+  }
+
 }
