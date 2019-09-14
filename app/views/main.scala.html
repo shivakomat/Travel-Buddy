@@ -11,6 +11,7 @@
 
         <title>@title</title>
         <link href="@routes.Assets.versioned("bootstrap_4.0/css/bootstrap.css")" rel="stylesheet">
+        <link href="@routes.Assets.versioned("stylesheets/travller-profile-page-styles.css")" type="Content-Type: text/html" rel="stylesheet">
 
     </head>
 
@@ -26,6 +27,19 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarResponsive">
                         <ul class="navbar-nav ml-auto">
+
+                                <!--  my-trips -->
+                            @if(activeMenuItem == "my-traveller-profile") {
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="/my-traveller-profile">My Profile
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                            } else {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/my-traveller-profile">My Profile</a>
+                                </li>
+                            }
 
                             <!--  my-trips -->
                             @if(activeMenuItem == "my-trips") {
@@ -55,7 +69,7 @@
 
 
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Friends</a>
+                                <a class="nav-link" href="#">lsFriends</a>
                             </li>
 
                             <li class="nav-item">

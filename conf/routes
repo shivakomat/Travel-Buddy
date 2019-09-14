@@ -12,6 +12,9 @@ GET     /create-bucket-item         controllers.HomeController.createBucketItem
 GET     /create-trip                controllers.HomeController.createTrip
 
 
+GET     /my-traveller-profile          controllers.HomeController.travellerProfilePage
+
+
 
 # An example controller showing how to use dependency injection
 GET     /count                      controllers.CountController.count
@@ -27,3 +30,5 @@ POST    /trips                      controllers.UserTripsController.createTrip
 POST    /trip-places                controllers.UserTripsController.createTripPlace
 POST    /buckets                    controllers.UserTripsController.createBucket
 POST    /bucket-items               controllers.UserTripsController.createBucketItems
+
+

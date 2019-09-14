@@ -37,4 +37,8 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     Ok(views.html.createNewTrip("Your new application is ready."))
   }
 
+  def travellerProfilePage = Action {
+    Ok(views.html.travellerProfile("Your new application is ready."))
+  }
+
 }
