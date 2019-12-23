@@ -1,0 +1,7 @@
+@import play.api.libs.json.JsValue
+@(profileData: JsValue)
+
+@main("Travel Buddy - Profile Page", "profile") {
+    <img class="avatar" src='@((profileData \ "picture").as[String])'/>
+    <h2>Welcome @((profileData \ "name").as[String])</h2>
+}

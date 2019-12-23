@@ -1,0 +1,33 @@
+@(message: String)
+
+<!DOCTYPE html>
+<html lang="en" ng-app="travelBuddyApp">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Bootstrap Sign in Form with Social Login Buttons</title>
+
+        <script src="//cdn.auth0.com/js/lock-9.0.min.js"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    </head>
+    <body ng-controller="profileController as profile">
+        {{profile.message}}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="@routes.Assets.versioned("node_modules/angular/angular.js")"></script>
+        <script src="@routes.Assets.versioned("node_modules/angular-animate/angular-animate.js")"></script>
+        <script src="@routes.Assets.versioned("node_modules/angular-aria/angular-aria.js")"></script>
+        <script src="@routes.Assets.versioned("node_modules/angular-material/angular-material.js")"></script>
+        <script src="@routes.Assets.versioned("node_modules/angular-jwt/dist/angular-jwt.js")"></script>
+        <script src="@routes.Assets.versioned("node_modules/angular-storage/dist/angular-storage.js")"></script>
+        <script src="@routes.Assets.versioned("node_modules/angular-ui-router/release/angular-ui-router.js")"></script>
+        <script src="@routes.Assets.versioned("node_modules/auth0-angular/build/auth0-angular.js")"></script>
+        <script src="@routes.Assets.versioned("node_modules/auth0-js/build/auth0.js")"></script>
+
+        <script src="@routes.Assets.versioned("javascripts/angular/main.js")"></script>
+        <script src="@routes.Assets.versioned("javascripts/angular/profile.controller.js")"></script>
+    </body>
+</html>

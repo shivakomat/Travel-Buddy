@@ -41,7 +41,7 @@ object UserTripsAPI {
 }
 
 
-object TestData {
+object UserTripsAPITest {
 
   Trips
     .add(Trip(id = 1, name = "Euro Trip 2019", userId = 1, description = "My 2019 Euro Trip", startDate = "", endDate = "", budget = 0))

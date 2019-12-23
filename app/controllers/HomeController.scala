@@ -2,6 +2,8 @@ package controllers
 
 import javax.inject._
 import play.api.mvc._
+import javax.inject.Inject
+import play.api.libs.json.JsValue
 
 /**
  * This controller creates an `Action` to handle HTTP requests to the
@@ -18,6 +20,14 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
    */
   def index = Action {
     Ok(views.html.index("Your new application is ready."))
+  }
+
+  def profile = Action {
+    Ok(views.html.profile("Your new application is ready."))
+  }
+
+  def loginPage = Action {
+    Ok(views.html.login())
   }
 
   def memberPortalPage = Action {

@@ -3,28 +3,28 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# An example controller showing a sample home page
+# Web pages
 GET     /                           controllers.HomeController.index
+GET     /profile                    controllers.HomeController.profile
 GET     /my-trips                   controllers.HomeController.memberPortalPage
 GET     /my-bucket-items            controllers.HomeController.myBucketItems
-
 GET     /create-bucket-item         controllers.HomeController.createBucketItem
 GET     /create-trip                controllers.HomeController.createTrip
+GET     /my-traveller-profile       controllers.HomeController.travellerProfilePage
+GET     /user-login                 controllers.HomeController.loginPage
+GET     /profile-page               controllers.ProfileController.profilePage
 
 
-GET     /my-traveller-profile          controllers.HomeController.travellerProfilePage
 
-
-
-# An example controller showing how to use dependency injection
+# examples
 GET     /count                      controllers.CountController.count
-# An example controller showing how to write asynchronous code
 GET     /message                    controllers.AsyncController.message
 
-# Map static resources from the /public folder to the /assets URL path
+
+# assets
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
-
+# REST API services
 GET     /user-trips/:id             controllers.UserTripsController.userTrip(id: Int)
 POST    /trips                      controllers.UserTripsController.createTrip
 POST    /trip-places                controllers.UserTripsController.createTripPlace
@@ -32,3 +32,7 @@ POST    /buckets                    controllers.UserTripsController.createBucket
 POST    /bucket-items               controllers.UserTripsController.createBucketItems
 
 
+#  User Login system
+GET     /login                      controllers.ApplicationController.login
+GET     /logout                     controllers.ApplicationController.logout
+GET     /callback                   controllers.CallbackController.callback(code: Option[String], state: Option[String])
