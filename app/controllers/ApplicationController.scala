@@ -3,7 +3,6 @@ package controllers
 import java.math.BigInteger
 import java.security.SecureRandom
 import java.util.UUID.randomUUID
-
 import helpers.{Auth0Config, RandomUtil}
 import javax.inject.Inject
 import play.api.cache._
@@ -16,14 +15,6 @@ class ApplicationController @Inject() (cache: DefaultSyncCacheApi, configuration
 
   def login: Action[AnyContent] = Action {
     // Generate random state parameter
-    object RandomUtil {
-      private val random = new SecureRandom()
-
-      def alphanumeric(nrChars: Int = 24): String = {
-        new BigInteger(nrChars * 5, random).toString(32)
-      }
-    }
-
     val state = RandomUtil.alphanumeric()
 
     var audience = config.audience
@@ -32,8 +23,6 @@ class ApplicationController @Inject() (cache: DefaultSyncCacheApi, configuration
     }
 
     val id = randomUUID().toString
-
-    println("Inside login button")
 
     cache.set(id + "state", state)
 
@@ -44,11 +33,6 @@ class ApplicationController @Inject() (cache: DefaultSyncCacheApi, configuration
       audience,
       state
     )
-
-
-    println("session id (app controller): " + id)
-
-    println("End of login button")
 
     Redirect(String.format("https://%s/%s", config.domain, query)).withSession("id" -> id)
   }

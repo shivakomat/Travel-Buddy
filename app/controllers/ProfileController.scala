@@ -10,9 +10,6 @@ class ProfileController @Inject() (cache: DefaultSyncCacheApi) extends Controlle
   def AuthenticatedAction(f: Request[AnyContent] => Result): Action[AnyContent] = {
     Action {
       request =>
-        println("Inside profile controller here")
-        println(request.session.data)
-        println("session: " + request.session.get("id"))
         request.session.get("id")
           .flatMap(id => Some(cache.get[JsValue](id + "profile")))
           .map(profile => f(request))

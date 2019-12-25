@@ -1,7 +1,8 @@
 package model
 
-case class User(id: Int, username: String, password: String, email: String,
-                travelNickname: String, hometown: String, birthDate: Int, numberOfCountriesVisited: Int)
+case class User(id: Int, auth0Id: String, username: String, password: String, email: String,
+                travelNickname: String = "", hometown: String = "", birthDate: Int = 0,
+                numberOfCountriesVisited: Int = 0)
 
 case class Trip(id: Int, name: String, description: String, budget: Double, startDate: String, endDate: String, userId: Int)
 case class TripPlace(id: Int, name: String, tripId: Int)
@@ -21,6 +22,8 @@ object Database {
   var buckets: Seq[Bucket] = Seq.empty[Bucket]
 
   var bucketItems: Seq[BucketItem] = Seq.empty[BucketItem]
+
+  var users: Seq[User] = Seq.empty[User]
 
 }
 
