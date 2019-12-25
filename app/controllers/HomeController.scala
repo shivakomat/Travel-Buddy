@@ -26,10 +26,6 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     Ok(views.html.profile("Your new application is ready."))
   }
 
-  def loginPage = Action {
-    Ok(views.html.login())
-  }
-
   def memberPortalPage = Action {
     Ok(views.html.myTrips("Your new application is ready."))
   }

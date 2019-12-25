@@ -14,6 +14,7 @@ libraryDependencies ++= Seq( jdbc , ehcache , ws , specs2 % Test , guice )
 libraryDependencies += jdbc
 libraryDependencies += evolutions
 libraryDependencies += cache
+libraryDependencies += cacheApi
 
 libraryDependencies += "com.h2database" % "h2" % "1.4.197"
 

@@ -11,7 +11,6 @@ GET     /my-bucket-items            controllers.HomeController.myBucketItems
 GET     /create-bucket-item         controllers.HomeController.createBucketItem
 GET     /create-trip                controllers.HomeController.createTrip
 GET     /my-traveller-profile       controllers.HomeController.travellerProfilePage
-GET     /user-login                 controllers.HomeController.loginPage
 GET     /profile-page               controllers.ProfileController.profilePage
 
 

@@ -2,6 +2,18 @@
 @(profileData: JsValue)
 
 @main("Travel Buddy - Profile Page", "profile") {
-    <img class="avatar" src='@((profileData \ "picture").as[String])'/>
-    <h2>Welcome @((profileData \ "name").as[String])</h2>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <div class="card" style="width: 15rem;">
+                    <div class="card-body" style="margin: auto;">
+                        <h5 class="card-title" >@((profileData \ "name").as[String])</h5>
+                    </div>
+                    <div class="card-body">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 }
