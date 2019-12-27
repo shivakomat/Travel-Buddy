@@ -6,12 +6,14 @@
 # Web pages
 GET     /                           controllers.HomeController.index
 GET     /profile                    controllers.HomeController.profile
-GET     /my-trips                   controllers.HomeController.memberPortalPage
 GET     /my-bucket-items            controllers.HomeController.myBucketItems
 GET     /create-bucket-item         controllers.HomeController.createBucketItem
-GET     /create-trip                controllers.HomeController.createTrip
 GET     /my-traveller-profile       controllers.HomeController.travellerProfilePage
+
+# Profile Controller
 GET     /profile-page               controllers.ProfileController.profilePage
+GET     /my-trips                   controllers.ProfileController.angularProfileTripsPage
+GET     /create-trip                controllers.ProfileController.createTripPage
 
 
 
@@ -25,7 +27,9 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 # REST API services
 GET     /user-trips/:id             controllers.UserTripsController.userTrip(id: Int)
++nocsrf
 POST    /trips                      controllers.UserTripsController.createTrip
+
 POST    /trip-places                controllers.UserTripsController.createTripPlace
 POST    /buckets                    controllers.UserTripsController.createBucket
 POST    /bucket-items               controllers.UserTripsController.createBucketItems

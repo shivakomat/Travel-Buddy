@@ -1,7 +1,7 @@
-@(message: String)
+@import model.Trip
+@(trips: Seq[Trip])
 
 @main("Travel Buddy - My Trips", "my-trips") {
-
         <!-- Page Content -->
     <div class="container">
 
@@ -24,12 +24,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Europ Trip 2019</td>
-                            <td>Eastern Europe Trip</td>
-                            <td>2500</td>
-                        </tr>
+                        @for(trip <- trips) {
+                            <tr>
+                                <th scope="row">@trip.id</th>
+                                <td>@trip.name</td>
+                                <td>@trip.description</td>
+                                <td>@trip.budget</td>
+                            </tr>
+                        }
                     </tbody>
                 </table>
             </div>

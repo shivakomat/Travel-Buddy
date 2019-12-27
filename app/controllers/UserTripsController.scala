@@ -20,7 +20,7 @@ class UserTripsController extends Controller {
   }
 
   def createTrip() = Action.async(BodyParsers.parse.json) { request =>
-    request.body.validate[Trip].fold(
+    request.body.validate[TripFormData].fold(
       errors => {
         logger.error("UserTripsController.createTrip() - ERROR LOG - " + JsError.toJson(errors))
         Future.successful(BadRequest(Json.obj("status" -> ERROR, "message" -> JsError.toJson(errors))))

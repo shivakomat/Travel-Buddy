@@ -1,8 +1,8 @@
-@(message: String)
+@(userId: Int)
 
 @main("Travel Buddy - Create A New Trip", "my-trips") {
         <!-- Page Content -->
-    <div class="container">
+    <div class="container" data-ng-controller="tripsController as userTrip">
 
         <div class="row">
             <div class="col-lg-12">
@@ -20,21 +20,29 @@
         </div>
 
         <div class="row" style="padding-top: 50px;">
+
+
             <div class="col-lg-12">
-                <form>
+                <form data-ng-submit="userTrip.newTrip(@userId)">
                     <label><h2>Enter Trip Details</h2></label>
                     <div class="form-group" style="padding-top: 20px;">
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="trip name">
+                        <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="trip name" data-ng-model="userTrip.formData.name" required>
                     </div>
                     <div class="form-group" style="padding-top: 20px;">
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="trip description">
+                        <input type="text" class="form-control"  data-ng-model="userTrip.formData.description" placeholder="trip description" required>
                     </div>
                     <div class="form-group" style="padding-top: 20px;">
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="trip places">
+                        <input type="text" class="form-control"  data-ng-model="userTrip.formData.tripPlaces" placeholder="trip places" required>
                         <small>type it with comma seperated values fox example (Barcelona, Amsterdam, Paris)</small>
                     </div>
                     <div class="form-group" style="padding-top: 20px;">
-                        <input type="text" class="form-control" id="exampleInputPassword1" placeholder="$ trip budget maximum amount">
+                        <input type="number" class="form-control"  data-ng-model="userTrip.formData.budget" placeholder="$ trip budget maximum amount" required>
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <input type="text" class="form-control"  data-ng-model="userTrip.formData.startDate" placeholder="approximate start date in the format yyyy-mm-dd" required>
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <input type="text" class="form-control"  data-ng-model="userTrip.formData.endDate" placeholder="approximate end date in the format yyyy-mm-dd" required>
                     </div>
                     <div class="form-group" style="padding-top: 20px;">
                         <button type="submit" class="btn btn-info">Submit</button>

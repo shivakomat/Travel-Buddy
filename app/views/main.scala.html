@@ -16,13 +16,22 @@
 
     </head>
 
-    <body>
+    <style>
+        body {
+            background-color: white;
+            height: 100vh;
+        }
+    </style>
+
+    <!-- to keep the full height -->
+
+    <body data-ng-app="travelBuddyApp">
 
         @if(activeMenuItem != "login") {
             <!-- Main Menu Navigation -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
                 <div class="container">
-                    <a class="navbar-brand" href="#">Travel Buddy</a>
+                    <a class="navbar-brand" href="#" style="text-color: white;">Travel Buddy</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -32,13 +41,13 @@
                                 <!--  my-trips -->
                             @if(activeMenuItem == "my-traveller-profile") {
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="/my-traveller-profile">My Profile
+                                    <a class="nav-link" href="/profile-page ">My Profile
                                         <span class="sr-only">(current)</span>
                                     </a>
                                 </li>
                             } else {
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/my-traveller-profile">My Profile</a>
+                                    <a class="nav-link" href="/profile-page ">My Profile</a>
                                 </li>
                             }
 
@@ -104,7 +113,7 @@
         <script src="@routes.Assets.versioned("node_modules/auth0-js/build/auth0.js")"></script>
 
         <script src="@routes.Assets.versioned("javascripts/angular/main.js")"></script>
-
+        <script src="@routes.Assets.versioned("javascripts/angular/tripsController.js")"></script>
 
     </body>
 

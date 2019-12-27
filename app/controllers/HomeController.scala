@@ -26,11 +26,6 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
     Ok(views.html.profile("Your new application is ready."))
   }
 
-  def memberPortalPage = Action {
-    Ok(views.html.myTrips("Your new application is ready."))
-  }
-
-
   def myBucketItems = Action {
     Ok(views.html.myBucketItems("Your new application is ready."))
   }
@@ -40,7 +35,7 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   }
 
   def createTrip = Action {
-    Ok(views.html.createNewTrip("Your new application is ready."))
+    Ok(views.html.createNewTrip(1))
   }
 
   def travellerProfilePage = Action {

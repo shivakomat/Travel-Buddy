@@ -1,0 +1,41 @@
+@(userId: Int)
+
+@main("Travel Buddy - My Trips", "my-trips") {
+    <!-- Page Content -->
+    <div class="container" data-ng-controller="tripsController as userTrip" data-ng-init="userTrip.getUserTrips(@userId)">
+        {{userTrip.userId}}
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="mt-5 text-left">My Trips</h1>
+                <a href="/create-trip" class="mt-5 btn btn-info" role="button">CREATE NEW TRIP</a>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-lg-12">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">Trip Name</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Budget</th>
+                            <th scope="col">Start Date</th>
+                            <th scope="col">End Date</th>
+                        </tr>
+                    </thead>
+                    <tbody data-ng-repeat="trip in userTrip.userTrips">
+                        <tr>
+                            <th scope="row">{{trip.name}}</th>
+                            <td>{{trip.description}}</td>
+                            <td>{{trip.budget | currency}}</td>
+                            <td>{{trip.startDate}}</td>
+                            <td>{{trip.endDate}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+}

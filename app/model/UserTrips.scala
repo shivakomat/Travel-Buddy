@@ -46,6 +46,9 @@ object UserTripsAPITest {
   Trips
     .add(Trip(id = 1, name = "Euro Trip 2019", userId = 1, description = "My 2019 Euro Trip", startDate = "", endDate = "", budget = 0))
 
+  Trips
+    .add(Trip(id = 2, name = "Bali Trip", userId = 1, description = "Bali trip with co worker", startDate = "", endDate = "", budget = 0))
+
   TripPlaces
     .add(TripPlace(id = 1, name = "Barcelona", tripId = 1))
   TripPlaces
@@ -74,7 +77,6 @@ object UserTripsAPITest {
   BucketItems.add(BucketItem(id = 10, bucketId = 4, null, null, null))
   BucketItems.add(BucketItem(id = 11, bucketId = 4, null, null, null))
   BucketItems.add(BucketItem(id = 12, bucketId = 4, null, null, null))
-
 
   UserTripsAPI.byUser(1).tripPlaces.foreach(println)
 }

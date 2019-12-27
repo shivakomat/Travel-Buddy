@@ -6,6 +6,8 @@ trait TripPlacesAPI {
 
   def add(item: TripPlace): Unit
 
+  def add(name: String, tripId: Int): Unit
+
   def all(): Seq[TripPlace]
 
   def delete(id: Int): Unit
@@ -15,6 +17,15 @@ trait TripPlacesAPI {
 }
 
 object TripPlaces extends TripPlacesAPI {
+
+  private var currentId = 0
+
+  override def add(name: String, tripId: Int): Unit = {
+    currentId = currentId + 1
+    Database.tripPlaces = Database.tripPlaces ++ Seq(
+      TripPlace(id = currentId, name, tripId)
+    )
+  }
 
   override def add(tripPlace: TripPlace): Unit =
     Database.tripPlaces = Database.tripPlaces ++ Seq(tripPlace)
