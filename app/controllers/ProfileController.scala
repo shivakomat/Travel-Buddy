@@ -22,7 +22,8 @@ class ProfileController @Inject() (cache: DefaultSyncCacheApi) extends Controlle
   def profilePage: Action[AnyContent] = AuthenticatedAction { request =>
     val id = request.session.get("id").get
     val profile = cache.get[JsValue](id + "profile").get
-    Ok(views.html.userProfile(profile))
+    val userId = (profile \ "app_user_id").as[Int]
+    Ok(views.html.userProfile(profile, userId))
   }
 
   def profileTripsPage: Action[AnyContent] = AuthenticatedAction { request =>

@@ -1,19 +1,64 @@
 @import play.api.libs.json.JsValue
-@(profileData: JsValue)
+@(profileData: JsValue, userId: Int)
 
-@main("Travel Buddy - Profile Page", "profile") {
-    <div class="container">
-        <div class="row mt-5">
-            <div class="col-lg-12">
-                <div class="card" style="width: 15rem;">
+@main("Travel Buddy - Profile Page", "my-traveller-profile") {
+    <div class="container-fluid">
+        <div class="row mt-5 offset-0 p-1">
+            <div class="col-lg-3">
+                <div class="card col-lg-7">
                     <img class="card-img-top" style="width: 200px; height:220px; margin: auto; padding-top: 20px" src="@routes.Assets.versioned("images/profile_img_430_430.png")" alt="Card image cap">
                     <div class="card-body" style="margin: auto;">
                         <h5 class="card-title" >@((profileData \ "name").as[String])</h5>
-                        <a href="#" style="width: 100px; margin-left: 17px; margin-top: 10px;" class="btn btn-success">Connect</a>
+@*                        <a href="#" style="width: 100px; margin-left: 25px; margin-top: 10px;" class="btn btn-success">Connect</a>*@
                     </div>
                     <div class="card-body">
-
+                        <h6><u>Travel XP</u></h6>
+                        <p class="mt-1"> -- out of 10 backpacks</p>
+                        <p class="mt-1"><b>Type:</b> -- blogger</p>
+                        <h6><u>About me</u></h6>
+                        <p class="mt-1"><b>Nationality:</b> -- </p>
+                        <p class="mt-1"><b>Current City:</b> -- </p>
+                        <p class="mt-1"><b>No of countries travelled:</b> -- </p>
+                        <p class="mt-1"><b>Favorite Places</b></p>
+                        <p class="mt-1">San Francisco, Paris, Reykjavik, Toronto, New york City</p>
                     </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="container-fluid" data-ng-controller="tripsController as userTrip" data-ng-init="userTrip.getUserTrips(@userId)">
+                    {{userTrip.userId}}
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h1 class="text-left">My Trips</h1>
+                            <a href="/create-trip" class="mt-5 btn btn-info" role="button">CREATE NEW TRIP</a>
+                        </div>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col-lg-12">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Trip Name</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Budget</th>
+                                        <th scope="col">Start Date</th>
+                                        <th scope="col">End Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody data-ng-repeat="trip in userTrip.userTrips">
+                                    <tr>
+                                        <th scope="row">{{trip.name}}</th>
+                                        <td>{{trip.description}}</td>
+                                        <td>{{trip.budget | currency}}</td>
+                                        <td>{{trip.startDate}}</td>
+                                        <td>{{trip.endDate}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

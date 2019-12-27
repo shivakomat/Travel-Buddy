@@ -30,7 +30,7 @@
         @if(activeMenuItem != "login") {
             <!-- Main Menu Navigation -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
-                <div class="container">
+                <div class="container-fluid">
                     <a class="navbar-brand" href="#" style="text-color: white;">Travel Buddy</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -52,36 +52,17 @@
                             }
 
                             <!--  my-trips -->
-                            @if(activeMenuItem == "my-trips") {
-                             <li class="nav-item active">
-                                <a class="nav-link" href="/my-trips">Trips
-                                    <span class="sr-only">(current)</span>
-                                </a>
-                             </li>
-                            } else {
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/my-trips">Trips</a>
-                                </li>
-                            }
-
-                            <!-- my-bucket-items -->
-                            @if(activeMenuItem == "my-bucket-items") {
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="/my-bucket-items">Buckets
-                                        <span class="sr-only">(current)</span>
-                                    </a>
-                                </li>
-                            } else {
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/my-bucket-items">Buckets</a>
-                                </li>
-                            }
-
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">lsFriends</a>
-                            </li>
-
+@*                            @if(activeMenuItem == "my-trips") {*@
+@*                             <li class="nav-item active">*@
+@*                                <a class="nav-link" href="/my-trips">Trips*@
+@*                                    <span class="sr-only">(current)</span>*@
+@*                                </a>*@
+@*                             </li>*@
+@*                            } else {*@
+@*                                <li class="nav-item">*@
+@*                                    <a class="nav-link" href="/my-trips">Trips</a>*@
+@*                                </li>*@
+@*                            }*@
                             <li class="nav-item">
                                 <a class="nav-link" href="/logout">Sign Out</a>
                             </li>
