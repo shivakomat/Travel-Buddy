@@ -14,6 +14,7 @@ GET     /my-traveller-profile       controllers.HomeController.travellerProfileP
 GET     /profile-page               controllers.ProfileController.profilePage
 GET     /my-trips                   controllers.ProfileController.angularProfileTripsPage
 GET     /create-trip                controllers.ProfileController.createTripPage
+GET     /trip-page/:tripId          controllers.ProfileController.tripPage(tripId: Int)
 
 
 

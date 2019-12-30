@@ -1,11 +1,10 @@
 package controllers
 
 import javax.inject.Inject
-import model.{Trips, UserTrips, UserTripsAPI}
+import model.UserTripsAPI
 import play.api.cache._
 import play.api.libs.json._
 import play.api.mvc._
-import JsonFormat._
 
 class ProfileController @Inject() (cache: DefaultSyncCacheApi) extends Controller {
 
@@ -45,7 +44,15 @@ class ProfileController @Inject() (cache: DefaultSyncCacheApi) extends Controlle
     val id = request.session.get("id").get
     val profile = cache.get[JsValue](id + "profile").get
     val userId = (profile \ "app_user_id").as[Int]
+    println("create trip page : " + userId)
     Ok(views.html.createNewTrip(userId))
+  }
+
+  def tripPage(tripId: Int): Action[AnyContent] = AuthenticatedAction { request =>
+    val id = request.session.get("id").get
+    val profile = cache.get[JsValue](id + "profile").get
+    val userId = (profile \ "app_user_id").as[Int]
+    Ok(views.html.trip(userId, tripId))
   }
 }
 
