@@ -1,0 +1,72 @@
+@(userId: Int, tripId: Int)
+
+@main("Travel Buddy - Trip Page", "trip page") {
+    <div class="container-fluid offset-1">
+       <div class="row mt-5 offset-0">
+            <div class="col-lg-3" data-ng-controller="tripsController as userTrip" data-ng-init="userTrip.getTripBy(@userId, @tripId)">
+                <div class="card col-lg-7">
+                    <img class="card-img-top" style="width: 200px; height:220px; margin: auto; padding-top: 20px" src="@routes.Assets.versioned("images/map.png")" alt="Card image cap">
+                    <div class="card-body" style="margin: auto;">
+                        <h5 class="card-title mt-lg-1" >{{userTrip.trip.name | uppercase}}</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6><u>Trip Details</u></h6>
+                        <p class="mt-3"><b>Description:</b> {{userTrip.trip.description}} </p>
+                        <p class="mt-1"><b>Budget:</b> {{userTrip.trip.budget | currency}} </p>
+                        <p class="mt-1"><b>Start Date:</b>{{userTrip.trip.startDate}} </p>
+                        <p class="mt-1"><b>End Date:</b>{{userTrip.trip.endDate}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-lg-offset-1">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="text-left">Buckets</h1>
+                    </div>
+                </div>
+                <div class="row mt-lg-5">
+                  <div class="col-lg-8">
+                     <div class="card-deck">
+                          <div class="card">
+                            <img class="card-img-top" style="width: 175px; height:200px; margin: auto;" src="@routes.Assets.versioned("images/plane.svg")" alt="Card image cap">
+                            <div class="card-body" style="margin: auto;">
+                                <a href="/create-bucket-item " class="mt-5 btn btn-primary" role="button">Flights</a>
+                            </div>
+                          </div>
+                          <div class="card">
+                            <img class="card-img-top" style="width: 200px; height:220px; margin: auto;" src="@routes.Assets.versioned("images/pin.svg")" alt="Card image cap">
+                            <div class="card-body" style="margin: auto;">
+                                <a href="/create-bucket-item " class="mt-5 btn btn-primary" role="button">Places</a>
+                            </div>
+                          </div>
+                          <div class="card">
+                            <img class="card-img-top" style="width: 200px; height:220px; margin: auto;" src="@routes.Assets.versioned("images/burger.svg")" alt="Card image cap">
+                            <div class="card-body" style="margin: auto;">
+                                <a href="/create-bucket-item " class="mt-5 btn btn-primary" role="button">Food Places</a>
+                            </div>
+                          </div>
+                     </div>
+                   </div>
+                </div>
+                <div class="row mt-lg-5">
+                  <div class="col-lg-8">
+                     <div class="card-deck">
+                          <div class="card">
+                            <img class="card-img-top" style="width: 200px; height:220px; margin: auto;" src="@routes.Assets.versioned("images/hotel-sign.svg")" alt="Card image cap">
+                            <div class="card-body" style="margin: auto;">
+                                <a href="/create-bucket-item" class="mt-5 btn btn-primary" role="button">Stays</a>
+                            </div>
+                          </div>
+                          <div class="card">
+                            <img class="card-img-top" style="width: 200px; height:220px; margin: auto;" src="@routes.Assets.versioned("images/cocktail.svg")" alt="Card image cap">
+                            <div class="card-body" style="margin: auto;">
+                                <a href="/create-bucket-item" class="mt-5 btn btn-primary" role="button">Bars / Clubs</a>
+                            </div>
+                          </div>
+                     </div>
+                  </div>
+                </div>
+            </div>
+    </div>
+}
+
