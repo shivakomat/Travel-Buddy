@@ -1,0 +1,73 @@
+@(userId: Int, tripId: Int)
+
+@main("Travel Buddy - Create a food place to check out", "add-place-to-visit-item") {
+    <!-- Page Content -->
+    <div class="container-fluid" data-ng-controller="tripsController as userTrip">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="mt-5 text-left">Create Place To Visit Item</h1>
+                <div class="mt-5">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/trip-page/@tripId">Trip</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Place To Visit Item</li>
+                            `                </ol>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row mt-lg-5">
+            <div class="col-lg-12">
+                <form data-ng-onsubmit="userTrip.newFoodPlaceItem(@userId, @tripId)">
+                    <label><h2>Set Item Details</h2></label>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <input type="text" class="form-control" placeholder="Food Place Name" data-ng-model="userTrip.formData.placeName" required>
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Add to place:
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" data-ng-init="userTrip.getTripPlacesBy(@userId, @tripId)" data-ng-repeat="tripPlace in userTrip.tripPlaces" data-ng-model="userTrip.formData.tripPlace" required>
+                                <a class="dropdown-item">{{tripPlace.name | uppercase}}</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <input type="text" class="form-control" placeholder="Cuisine Type" data-ng-model="userTrip.formData.cuisineType">
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <input type="number" class="form-control" placeholder="Expensiveness" data-ng-model="userTrip.formData.estimatedPrice">
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <input type="number" class="form-control" placeholder="Phone Number" data-ng-model="userTrip.formData.phoneNumber">
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <input type="number" class="form-control" placeholder="Ratings" data-ng-model="userTrip.formData.reviewStars">
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <input type="text" class="form-control" placeholder="Appetite Type" data-ng-model="userTrip.formData.appetiteType">
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <input type="text" class="form-control" placeholder="Reservation Required" data-ng-model="userTrip.formData.reservationRequired">
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <input type="text" class="form-control" placeholder="Sharable Link" data-ng-model="userTrip.formData.sharableLink">
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <input type="text-area" class="form-control" placeholder="Sharable Link" data-ng-model="userTrip.formData.notes">
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <button type="submit" class="btn btn-info">ADD TO FOOD PLACES</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+}

@@ -41,6 +41,17 @@ object Trips extends TripsAPI {
 
     val tripPlaces = newTrip.tripPlaces.split(',')
     tripPlaces.foreach(p => TripPlaces.add(name = p, tripId = trip.id))
+
+    // Adding the default buckets
+
+    // TODO: Need to change the add implementation of a Buckets API
+    // for now setting static id's
+
+    Buckets.add(Bucket(1, "Flights", trip.id))
+    Buckets.add(Bucket(2, "Stays", trip.id))
+    Buckets.add(Bucket(3, "Food Places", trip.id))
+    Buckets.add(Bucket(4, "Places To Visit", trip.id))
+
     Database.trips = Database.trips ++ Seq(trip)
   }
 

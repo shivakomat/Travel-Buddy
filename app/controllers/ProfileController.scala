@@ -18,6 +18,12 @@ class ProfileController @Inject() (cache: DefaultSyncCacheApi) extends Controlle
     }
   }
 
+  def getUserId(session: Session): Int = {
+    val id = session.get("id").get
+    val profile = cache.get[JsValue](id + "profile").get
+    (profile \ "app_user_id").as[Int]
+  }
+
   def profilePage: Action[AnyContent] = AuthenticatedAction { request =>
     val id = request.session.get("id").get
     val profile = cache.get[JsValue](id + "profile").get
@@ -54,5 +60,23 @@ class ProfileController @Inject() (cache: DefaultSyncCacheApi) extends Controlle
     val userId = (profile \ "app_user_id").as[Int]
     Ok(views.html.trip(userId, tripId))
   }
+
+  def createFoodPlaceItemPage(tripId: Int): Action[AnyContent] = AuthenticatedAction { request =>
+    Ok(views.html.foodPlaceItem(getUserId(request.session), tripId))
+  }
+
+  def createStayItemPage(tripId: Int): Action[AnyContent] = AuthenticatedAction { request =>
+    Ok(views.html.stayItem(getUserId(request.session), tripId))
+  }
+
+  def createPlacesToVisitItemPage(tripId: Int): Action[AnyContent] = AuthenticatedAction { request =>
+    Ok(views.html.placesToVisitItem(getUserId(request.session), tripId))
+  }
+
+  def createFlightItemPage(tripId: Int): Action[AnyContent] = AuthenticatedAction { request =>
+    Ok(views.html.flightItem(getUserId(request.session), tripId))
+  }
+
+
 }
 

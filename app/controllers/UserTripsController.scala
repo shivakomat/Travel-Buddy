@@ -1,6 +1,6 @@
 package controllers
 
-import model.{Bucket, BucketItem, BucketItems, Buckets, Trip, TripPlace, TripPlaces, Trips, UserTrips, UserTripsAPI}
+import model.{Bucket, BucketItem, BucketItems, Buckets, FlightItem, FoodPlaceItem, PlacesToVisit, StayItem, Trip, TripPlace, TripPlaces, Trips, UserTrips, UserTripsAPI}
 import JsonFormat._
 import play.api.Logger
 import play.api.libs.json.{JsError, Json}
@@ -72,11 +72,58 @@ class UserTripsController extends Controller {
     )
   }
 
+  def createFlightItems() = Action.async(BodyParsers.parse.json) { request =>
+    request.body.validate[FlightItem].fold(
+      errors => {
+        logger.error("UserTripsController.createBucketItems() - ERROR LOG - " + JsError.toJson(errors))
+        Future.successful(BadRequest(Json.obj("status" -> ERROR, "message" -> JsError.toJson(errors))))
+      },
+      flightItem => {
+        BucketItems.addFlightItems(flightItem)
+        Future.successful(Ok(Json.obj("status" -> SUCCESS, "message" -> ("Bucket item was created successfully"))))
+      }
+    )
+  }
+
+  def createFoodPlaceItems() = Action.async(BodyParsers.parse.json) { request =>
+    request.body.validate[FoodPlaceItem].fold(
+      errors => {
+        logger.error("UserTripsController.createFoodPlaceItems() - ERROR LOG - " + JsError.toJson(errors))
+        Future.successful(BadRequest(Json.obj("status" -> ERROR, "message" -> JsError.toJson(errors))))
+      },
+      foodPlaceItem => {
+        BucketItems.addFoodPlaceItems(foodPlaceItem)
+        Future.successful(Ok(Json.obj("status" -> SUCCESS, "message" -> ("Bucket item was created successfully"))))
+      }
+    )
+  }
 
 
+  def createPlacesToVisitItems() = Action.async(BodyParsers.parse.json) { request =>
+    request.body.validate[PlacesToVisit].fold(
+      errors => {
+        logger.error("UserTripsController.createBucketItems() - ERROR LOG - " + JsError.toJson(errors))
+        Future.successful(BadRequest(Json.obj("status" -> ERROR, "message" -> JsError.toJson(errors))))
+      },
+      placesToVisit => {
+        BucketItems.addPlacesToVisitItems(placesToVisit)
+        Future.successful(Ok(Json.obj("status" -> SUCCESS, "message" -> ("Bucket item was created successfully"))))
+      }
+    )
+  }
 
 
-
-
+  def createStayItems() = Action.async(BodyParsers.parse.json) { request =>
+    request.body.validate[StayItem].fold(
+      errors => {
+        logger.error("UserTripsController.createBucketItems() - ERROR LOG - " + JsError.toJson(errors))
+        Future.successful(BadRequest(Json.obj("status" -> ERROR, "message" -> JsError.toJson(errors))))
+      },
+      stayItem => {
+        BucketItems.addStayItems(stayItem)
+        Future.successful(Ok(Json.obj("status" -> SUCCESS, "message" -> ("Bucket item was created successfully"))))
+      }
+    )
+  }
 
 }
