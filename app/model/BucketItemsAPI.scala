@@ -44,7 +44,7 @@ object BucketItems extends BucketItemsAPI {
 
   override def addPlacesToVisitItems(placesToVisit: PlacesToVisit): Unit = {
     currentId = currentId + 1
-    placesToVisit.copy(itemId = currentId)
+    placesToVisit.copy(itemId = Some(currentId))
     Database.placesToVisitItems = Database.placesToVisitItems ++ Seq(placesToVisit)
   }
 

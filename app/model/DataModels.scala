@@ -28,7 +28,7 @@ case class FoodPlaceItem (itemId: Option[Int] = None, placeName: String, estimat
                           phoneNumber: Long, notes: String, shareableLink: String,
                           tripPlaceId: Int, tripId: Int, userId: Int)
 
-case class PlacesToVisit (itemId: Int, placeName: String, mapLink: String,
+case class PlacesToVisit (itemId: Option[Int] = None, placeName: String, mapLink: String,
                           anyFees: Double, notes: String, shareableLink: String,
                           tripPlaceId: Int, tripId: Int, userId: Int)
 

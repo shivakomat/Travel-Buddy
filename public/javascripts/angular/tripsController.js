@@ -33,6 +33,10 @@ app.controller('tripsController', function($http, $window) {
         createStayItem(userId, tripId);
     };
 
+    tripController.newPlaceToCheckout = function(userId, tripId) {
+        createPlaceToCheckout(userId, tripId);
+    };
+
    function getUserTripByUserIdAndTripId(userId, tripId) {
       $http({
            method: 'GET',
@@ -98,6 +102,28 @@ app.controller('tripsController', function($http, $window) {
             console.log("ERROR creating a trip");
         })
     }
+
+    function createPlaceToCheckout(userId, tripId) {
+        tripController.formData.userId = userId;
+        tripController.formData.tripId = tripId;
+        tripController.formData.tripPlaceId = Number(tripController.formData.tripPlaceId);
+        console.log(tripController.formData);
+        $http({
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            url: '/places-to-visit-items',
+            data: JSON.stringify(tripController.formData),
+        }).then(function mySuccess() {
+            console.log("successfully created");
+            $window.location.href = "http://" + $window.location.host + "/profile-page"
+        }, function myError() {
+            console.log("ERROR creating a stay item");
+        })
+    }
+
+
 
     function createStayItem(userId, tripId) {
         tripController.formData.userId = userId;
