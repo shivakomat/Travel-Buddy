@@ -9,7 +9,6 @@ object JsonFormat {
   implicit val bucketItemFormat = Json.format[BucketItem]
   implicit val tripFormat = Json.format[Trip]
   implicit val tripPlaceFormat = Json.format[TripPlace]
-  implicit val userTripFormat = Json.format[UserTrips]
   implicit val user = Json.format[User]
 
   implicit val tripFormData = Json.format[TripFormData]
@@ -18,5 +17,7 @@ object JsonFormat {
   implicit val stayItem = Json.format[StayItem]
   implicit val placeToVisitItem = Json.format[PlacesToVisit]
   implicit val foodPlacesItem = Json.format[FoodPlaceItem]
+
+  implicit val userTripFormat = Json.format[UserTrips]
 
 }

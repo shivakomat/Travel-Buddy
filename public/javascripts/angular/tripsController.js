@@ -4,6 +4,22 @@ app.controller('tripsController', function($http, $window) {
     tripController.userTrips = [];
     tripController.trip = {};
     tripController.tripPlaces = [];
+    tripController.flightItems = [];
+    tripController.stayItems = [];
+    tripController.foodPlaceItems = [];
+
+    tripController.getUsersTripFoodPlaceItems = function (userId, tripId) {
+        getFoodPlaces(userId, tripId);
+    };
+
+    tripController.getUsersTripStayItems = function (userId, tripId) {
+        getStayItems(userId, tripId);
+    };
+
+
+    tripController.getUserTripFlightItems = function (userId, tripId) {
+       getFlightItems(userId, tripId);
+    };
 
     tripController.getUserTrips = function (userId) {
         getAllUsersTrips(userId);
@@ -37,6 +53,7 @@ app.controller('tripsController', function($http, $window) {
         createPlaceToCheckout(userId, tripId);
     };
 
+
    function getUserTripByUserIdAndTripId(userId, tripId) {
       $http({
            method: 'GET',
@@ -53,7 +70,65 @@ app.controller('tripsController', function($http, $window) {
        });
    }
 
-   function getAllUserTripPlaces(userId, tripId) {
+    function getFlightItems(userId, tripId) {
+        $http({
+            method: 'GET',
+            url: '/user-trips/'+ userId
+        }).then(function mySuccess (response) {
+            console.log(response.data);
+            var index = 0;
+            for (var i = 0; i < response.data.flightItems.length; i++) {
+                if(response.data.flightItems[i].tripId === tripId) {
+                    tripController.flightItems[index]  = response.data.flightItems[i];
+                    index = index + 1;
+                }
+            }
+            console.log(tripController.flightItems);
+        }, function myError (response) {
+            console.log(response.statusText)
+        });
+    }
+
+    function getStayItems(userId, tripId) {
+        $http({
+            method: 'GET',
+            url: '/user-trips/'+ userId
+        }).then(function mySuccess (response) {
+            console.log(response.data);
+            var index = 0;
+            for (var i = 0; i < response.data.stayItems.length; i++) {
+                if(response.data.stayItems[i].tripId === tripId) {
+                    tripController.stayItems[index]  = response.data.stayItems[i];
+                    index = index + 1;
+                }
+            }
+            console.log(tripController.stayItems);
+        }, function myError (response) {
+            console.log(response.statusText)
+        });
+    }
+
+    function getFoodPlaces(userId, tripId) {
+        $http({
+            method: 'GET',
+            url: '/user-trips/'+ userId
+        }).then(function mySuccess (response) {
+            console.log(response.data);
+            var index = 0;
+            for (var i = 0; i < response.data.foodPlaceItems.length; i++) {
+                if(response.data.foodPlaceItems[i].tripId === tripId) {
+                    tripController.foodPlaceItems[index]  = response.data.foodPlaceItems[i];
+                    index = index + 1;
+                }
+            }
+            console.log(tripController.foodPlaceItems);
+        }, function myError (response) {
+            console.log(response.statusText)
+        });
+    }
+
+
+    function getAllUserTripPlaces(userId, tripId) {
        console.log("Inside gell all user trip places");
        $http({
            method: 'GET',
@@ -139,7 +214,7 @@ app.controller('tripsController', function($http, $window) {
             data: JSON.stringify(tripController.formData),
         }).then(function mySuccess() {
             console.log("successfully created");
-            $window.location.href = "http://" + $window.location.host + "/profile-page"
+            $window.location.href = "http://" + $window.location.host + "/stay-items-page/" + tripId
         }, function myError() {
             console.log("ERROR creating a stay item");
         })
@@ -158,7 +233,7 @@ app.controller('tripsController', function($http, $window) {
             data: JSON.stringify(tripController.formData),
         }).then(function mySuccess() {
             console.log("successfully created");
-            $window.location.href = "http://" + $window.location.host + "/profile-page"
+            $window.location.href = "http://" + $window.location.host + "/flight-items-page/" + tripId
         }, function myError() {
             console.log("ERROR creating a flight item");
         })

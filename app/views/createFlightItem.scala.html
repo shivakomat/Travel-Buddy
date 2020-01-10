@@ -1,0 +1,75 @@
+@(userId: Int, tripId: Int)
+
+@main("Travel Buddy - Create a flight item to possible book", "add-flight-item") {
+    <!-- Page Content -->
+    <div class="container-fluid" data-ng-controller="tripsController as userTrip">
+
+        <div class="row mt-lg-5">
+            <div class="col-lg-3" data-ng-controller="tripsController as userTrip" data-ng-init="userTrip.getTripBy(@userId, @tripId)">
+                <div class="card col-lg-7">
+                    <img class="card-img-top" style="width: 200px; height:220px; margin: auto; padding-top: 20px" src="@routes.Assets.versioned("images/map.png")" alt="Card image cap">
+                    <div class="card-body" style="margin: auto;">
+                        <h5 class="card-title mt-lg-1" >{{userTrip.trip.name | uppercase}}</h5>
+                    </div>
+                    <div class="card-body">
+                        <h6><u>Trip Details</u></h6>
+                        <p class="mt-3"><b>Description:</b> {{userTrip.trip.description}} </p>
+                        <p class="mt-1"><b>Budget:</b> {{userTrip.trip.budget | currency}} </p>
+                        <p class="mt-1"><b>Start Date:</b>{{userTrip.trip.startDate}} </p>
+                        <p class="mt-1"><b>End Date:</b>{{userTrip.trip.endDate}}</p>
+                    </div>
+                </div>
+            </div>
+            <div  class="col-lg-8 col-lg-offset-1" data-ng-init="userTrip.getTripPlacesBy(@userId, @tripId)">
+                <h1 class="text-left">Add Flight</h1>
+                <div class="mt-5">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/trip-page/@tripId">Trip</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Flight</li>
+                        </ol>
+                    </nav>
+                </div>
+                <form data-ng-submit="userTrip.newFlightItem(@userId, @tripId)">
+                    <div class="form-group" style="padding-top: 20px;">
+                        <input type="text" class="form-control" placeholder="Set Custom Name" data-ng-model="userTrip.formData.itemName" required>
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <span>Select from place: </span>
+                        <div>
+                            <select data-ng-model="userTrip.formData.from">
+                                <option selected>----------------------------------------------------</option>
+                                <option value={{tripPlace.name}} data-ng-repeat="tripPlace in userTrip.tripPlaces">{{tripPlace.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <span>Select destination place: </span>
+                        <div>
+                            <select data-ng-model="userTrip.formData.to">
+                                <option selected>----------------------------------------------------</option>
+                                <option value={{tripPlace.id}} data-ng-repeat="tripPlace in userTrip.tripPlaces">{{tripPlace.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <input type="number" class="form-control" placeholder="Estimated Flight Cost" data-ng-model="userTrip.formData.estimatedCost">
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <input type="text" class="form-control" placeholder="Airline Name" data-ng-model="userTrip.formData.airlines">
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <input type="text" class="form-control" placeholder="Sharable Link" data-ng-model="userTrip.formData.shareableLink">
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <input type="text-area" class="form-control" placeholder="Notes" data-ng-model="userTrip.formData.notes">
+                    </div>
+                    <div class="form-group" style="padding-top: 20px;">
+                        <button type="submit" class="btn btn-info">ADD</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+}

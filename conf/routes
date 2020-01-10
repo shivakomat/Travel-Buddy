@@ -21,6 +21,9 @@ GET /create-flight-item-page/:tripId      controllers.ProfileController.createFl
 GET /create-places-to-visit-page/:tripId  controllers.ProfileController.createPlacesToVisitItemPage(tripId: Int)
 GET /create-stay-item-visit-page/:tripId  controllers.ProfileController.createStayItemPage(tripId: Int)
 
+GET /flight-items-page/:tripId            controllers.ProfileController.flightItemsPage(tripId: Int)
+GET /stay-items-page/:tripId            controllers.ProfileController.stayItemsPage(tripId: Int)
+
 #
 
 
