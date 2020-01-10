@@ -7,15 +7,19 @@ app.controller('tripsController', function($http, $window) {
     tripController.flightItems = [];
     tripController.stayItems = [];
     tripController.foodPlaceItems = [];
+    tripController.placesToVisit = [];
 
     tripController.getUsersTripFoodPlaceItems = function (userId, tripId) {
         getFoodPlaces(userId, tripId);
     };
 
+    tripController.getUserTripPlacesToVisitItems = function (userId, tripId) {
+        getPlacesToVisit(userId, tripId);
+    };
+
     tripController.getUsersTripStayItems = function (userId, tripId) {
         getStayItems(userId, tripId);
     };
-
 
     tripController.getUserTripFlightItems = function (userId, tripId) {
        getFlightItems(userId, tripId);
@@ -52,7 +56,6 @@ app.controller('tripsController', function($http, $window) {
     tripController.newPlaceToCheckout = function(userId, tripId) {
         createPlaceToCheckout(userId, tripId);
     };
-
 
    function getUserTripByUserIdAndTripId(userId, tripId) {
       $http({
@@ -127,6 +130,24 @@ app.controller('tripsController', function($http, $window) {
         });
     }
 
+    function getPlacesToVisit(userId, tripId) {
+        $http({
+            method: 'GET',
+            url: '/user-trips/'+ userId
+        }).then(function mySuccess (response) {
+            console.log(response.data);
+            var index = 0;
+            for (var i = 0; i < response.data.placesToVisit.length; i++) {
+                if(response.data.placesToVisit[i].tripId === tripId) {
+                    tripController.placesToVisit[index]  = response.data.placesToVisit[i];
+                    index = index + 1;
+                }
+            }
+            console.log(tripController.placesToVisit);
+        }, function myError (response) {
+            console.log(response.statusText)
+        });
+    }
 
     function getAllUserTripPlaces(userId, tripId) {
        console.log("Inside gell all user trip places");
