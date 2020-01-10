@@ -213,7 +213,7 @@ app.controller('tripsController', function($http, $window) {
             data: JSON.stringify(tripController.formData),
         }).then(function mySuccess() {
             console.log("successfully created");
-            $window.location.href = "http://" + $window.location.host + "/profile-page"
+            $window.location.href = "http://" + $window.location.host + "/places-to-visit-items-page/" + tripId
         }, function myError() {
             console.log("ERROR creating a stay item");
         })
@@ -275,7 +275,7 @@ app.controller('tripsController', function($http, $window) {
             data: JSON.stringify(tripController.formData),
         }).then(function mySuccess() {
             console.log("successfully created");
-            $window.location.href = "http://" + $window.location.host + "/profile-page"
+            $window.location.href = "http://" + $window.location.host + "/food-place-items-page/" + tripId
         }, function myError() {
             console.log("ERROR creating a food place item");
         })

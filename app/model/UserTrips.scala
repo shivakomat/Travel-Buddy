@@ -9,16 +9,16 @@ case class UserTrips(userId: Int, trips: Seq[Trip],
 
 object UserTripsAPI {
 
-  Trips
-    .add(Trip(id = 1, name = "Euro Trip 2019", userId = 1, description = "My 2019 Euro Trip", startDate = "", endDate = "", budget = 5000))
-
-  Trips
-    .add(Trip(id = 2, name = "Bali Trip", userId = 1, description = "Bali trip with co worker", startDate = "", endDate = "", budget = 3000))
-
-  TripPlaces
-    .add(TripPlace(id = 1, name = "Barcelona", tripId = 1))
-  TripPlaces
-    .add(TripPlace(id = 2, name = "Dubrovnik", tripId = 1))
+//  Trips
+//    .add(Trip(id = 1, name = "Euro Trip 2019", userId = 1, description = "My 2019 Euro Trip", startDate = "", endDate = "", budget = 5000))
+//
+//  Trips
+//    .add(Trip(id = 2, name = "Bali Trip", userId = 1, description = "Bali trip with co worker", startDate = "", endDate = "", budget = 3000))
+//
+//  TripPlaces
+//    .add(TripPlace(id = 1, name = "Barcelona", tripId = 1))
+//  TripPlaces
+//    .add(TripPlace(id = 2, name = "Dubrovnik", tripId = 1))
 
   def byUser(userId: Int): UserTrips = {
     val trips = Trips.byUserId(userId)
