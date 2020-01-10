@@ -1,8 +1,8 @@
 @(userId: Int, tripId: Int)
 
-@main("Travel Buddy - Create a flight item to possible book", "stay-items") {
+@main("Travel Buddy - Create a flight item to possible book", "food-places") {
 
-    <div class="container-fluid" data-ng-controller="tripsController as userTrip" data-ng-init="userTrip.getUsersTripStayItems(@userId, @tripId)">
+    <div class="container-fluid" data-ng-controller="tripsController as userTrip" data-ng-init="userTrip.getUsersTripFoodPlaceItems(@userId, @tripId)">
         <div class="row mt-lg-5 offset-1">
             <div class="col-lg-3" data-ng-controller="tripsController as userTrip" data-ng-init="userTrip.getTripBy(@userId, @tripId)">
                 <div class="card col-lg-7">
@@ -20,41 +20,41 @@
                 </div>
             </div>
             <div class="col-lg-8 col-lg-offset-1">
-                <div class="row mt-5">
-                  <div class="col-lg-8">
+                <div class="mt-5">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/trip-page/@tripId">Trip</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Accommodations</li>
+                            <li class="breadcrumb-item active" aria-current="page">Food Places</li>
                         </ol>
                     </nav>
-                  </div>
                 </div>
-                <h1 class="mt-5 text-left">Accommodations</h1>
-                <a href="/create-stay-item-visit-page/@tripId" class="mt-5 btn btn-info" role="button">ADD ITEM</a>
+                <h1 class="mt-5 text-left">Food Places</h1>
+                <a href="/create-food-place-item-page/@tripId" class="mt-5 btn btn-info" role="button">ADD ITEM</a>
                 <div class="row mt-5">
                     <div class="col-lg-8">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Number Of Days</th>
-                                    <th scope="col">Specific Location</th>
-                                    <th scope="col">Cost Per Night</th>
+                                    <th scope="col">Place Name</th>
+                                    <th scope="col">Estimated Price</th>
+                                    <th scope="col">Cuisine Type</th>
+                                    <th scope="col">Reservation Required</th>
                                     <th scope="col">Review Stars</th>
+                                    <th scope="col">Phone Number</th>
                                     <th scope="col">Notes</th>
                                     <th scope="col">Link</th>
                                 </tr>
                             </thead>
-                            <tbody data-ng-repeat="stay in userTrip.stayItems">
+                            <tbody data-ng-repeat="food in userTrip.foodPlaceItems">
                                 <tr>
-                                    <th scope="row">{{stay.name}}</th>
-                                    <td>{{stay.numberOfDaysToStay}}</td>
-                                    <td>{{stay.specificLocation}}</td>
-                                    <td>{{stay.costPerNight | currency}}</td>
-                                    <td>{{stay.reviewStars}}</td>
-                                    <td>{{stay.notes}}</td>
-                                    <td>{{stay.shareableLink}}</td>
+                                    <th scope="row">{{food.placeName}}</th>
+                                    <td>{{food.estimatedPrice | currency}}</td>
+                                    <td>{{food.cuisineType}}</td>
+                                    <td>{{food.reservationRequired}}</td>
+                                    <td>{{food.reviewStars}}</td>
+                                    <td>{{food.phoneNumber}}</td>
+                                    <td>{{food.notes}}</td>
+                                    <td>{{food.shareableLink}}</td>
                                 </tr>
                             </tbody>
                         </table>

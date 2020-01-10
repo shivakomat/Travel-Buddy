@@ -4,7 +4,7 @@
     <!-- Page Content -->
     <div class="container-fluid" data-ng-controller="tripsController as userTrip">
 
-        <div class="row mt-lg-5">
+        <div class="row mt-lg-5 offset-1">
             <div class="col-lg-3" data-ng-controller="tripsController as userTrip" data-ng-init="userTrip.getTripBy(@userId, @tripId)">
                 <div class="card col-lg-7">
                     <img class="card-img-top" style="width: 200px; height:220px; margin: auto; padding-top: 20px" src="@routes.Assets.versioned("images/map.png")" alt="Card image cap">
@@ -21,12 +21,13 @@
                 </div>
             </div>
             <div  class="col-lg-8 col-lg-offset-1" data-ng-init="userTrip.getTripPlacesBy(@userId, @tripId)">
-                <h1 class="text-left">Add stay</h1>
+                <h1 class="text-left">Add an accommodation</h1>
                 <div class="mt-5">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/trip-page/@tripId">Trip</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Stay</li>
+                            <li class="breadcrumb-item"><a href="/stay-items-page/@tripId">Accommodations</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Accommodation</li>
                         </ol>
                     </nav>
                 </div>

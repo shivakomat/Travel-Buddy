@@ -22,7 +22,9 @@ GET /create-places-to-visit-page/:tripId  controllers.ProfileController.createPl
 GET /create-stay-item-visit-page/:tripId  controllers.ProfileController.createStayItemPage(tripId: Int)
 
 GET /flight-items-page/:tripId            controllers.ProfileController.flightItemsPage(tripId: Int)
-GET /stay-items-page/:tripId            controllers.ProfileController.stayItemsPage(tripId: Int)
+GET /stay-items-page/:tripId              controllers.ProfileController.stayItemsPage(tripId: Int)
+GET /food-place-items-page/:tripId        controllers.ProfileController.foodPlacesItemsPage(tripId: Int)
+GET /places-to-visit-items-page/:tripId   controllers.ProfileController.placesToVisitItemsPage(tripId: Int)
 
 #
 

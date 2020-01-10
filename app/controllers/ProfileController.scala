@@ -85,6 +85,13 @@ class ProfileController @Inject() (cache: DefaultSyncCacheApi) extends Controlle
     Ok(views.html.stayItemsList(getUserId(request.session), tripId))
   }
 
+  def foodPlacesItemsPage(tripId: Int): Action[AnyContent] = AuthenticatedAction { request =>
+    Ok(views.html.foodPlacesList(getUserId(request.session), tripId))
+  }
+
+  def placesToVisitItemsPage(tripId: Int): Action[AnyContent] = AuthenticatedAction { request =>
+    Ok(views.html.placesToVisitList(getUserId(request.session), tripId))
+  }
 
 }
 

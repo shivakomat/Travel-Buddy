@@ -1,9 +1,9 @@
 @(userId: Int, tripId: Int)
 
-@main("Travel Buddy - Create a flight item to possible book", "flight-items") {
+@main("Travel Buddy - Create a flight item to possible book", "places-to-visit") {
 
-    <div class="container-fluid" data-ng-controller="tripsController as userTrip" data-ng-init="userTrip.getUserTripFlightItems(@userId, @tripId)">
-        <div class="row mt-lg-5  offset-1">
+    <div class="container-fluid" data-ng-controller="tripsController as userTrip" data-ng-init="userTrip.getUserTripPlacesToVisitItems(@userId, @tripId)">
+        <div class="row mt-lg-5 offset-1">
             <div class="col-lg-3" data-ng-controller="tripsController as userTrip" data-ng-init="userTrip.getTripBy(@userId, @tripId)">
                 <div class="card col-lg-7">
                     <img class="card-img-top" style="width: 200px; height:220px; margin: auto; padding-top: 20px" src="@routes.Assets.versioned("images/map.png")" alt="Card image cap">
@@ -20,41 +20,37 @@
                 </div>
             </div>
             <div class="col-lg-8 col-lg-offset-1">
-                <div class="row">
+                <div class="row mt-5">
                     <div class="col-lg-8 mt-5">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/trip-page/@tripId">Trip</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Flight Tickets</li>
+                                <li class="breadcrumb-item active" aria-current="page">Places To Visit</li>
                             </ol>
                         </nav>
                     </div>
                 </div>
-                <h1 class="mt-5 text-left">Flight Items</h1>
-                <a href="/create-flight-item-page/@tripId" class="mt-5 btn btn-info" role="button">ADD ITEM</a>
+                <h1 class="mt-5 text-left">Places to check out</h1>
+                <a href="/create-places-to-visit-page/@tripId" class="mt-5 btn btn-info" role="button">ADD ITEM</a>
                 <div class="row mt-5">
                     <div class="col-lg-8">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">From</th>
-                                    <th scope="col">To</th>
-                                    <th scope="col">Estimated Cost</th>
-                                    <th scope="col">Airlines</th>
+                                    <th scope="col">Place Name</th>
+                                    <th scope="col">Any Fees</th>
+                                    <th scope="col">Map Link</th>
                                     <th scope="col">Notes</th>
                                     <th scope="col">Link</th>
                                 </tr>
                             </thead>
-                            <tbody data-ng-repeat="flight in userTrip.flightItems">
+                            <tbody data-ng-repeat="place in userTrip.placesToVisit">
                                 <tr>
-                                    <th scope="row">{{flight.itemName}}</th>
-                                    <td>{{flight.from}}</td>
-                                    <td>{{flight.to}}</td>
-                                    <td>{{flight.estimatedCost | currency}}</td>
-                                    <td>{{flight.airlines}}</td>
-                                    <td>{{flight.notes}}</td>
-                                    <td>{{flight.shareableLink}}</td>
+                                    <th scope="row">{{place.placeName}}</th>
+                                    <td>{{place.anyFees | currency}}</td>
+                                    <td>{{place.mapLink}}</td>
+                                    <td>{{place.notes}}</td>
+                                    <td>{{place.shareableLink}}</td>
                                 </tr>
                             </tbody>
                         </table>
