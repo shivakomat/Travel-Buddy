@@ -42,6 +42,18 @@ object BucketItems extends BucketItemsAPI {
     Database.flightItems = Database.flightItems ++ Seq(flightItem)
   }
 
+  def flightItems(userId: Int): Seq[FlightItem] =
+    Database.flightItems.filter(_.userId == userId)
+
+  def foodPlaces(userId: Int): Seq[FoodPlaceItem] =
+    Database.foodPlaceItems.filter(_.userId == userId)
+
+  def placesToVisit(userId: Int): Seq[PlacesToVisit] =
+    Database.placesToVisitItems.filter(_.userId == userId)
+
+  def stayItems(userId: Int): Seq[StayItem] =
+    Database.stayItems.filter(_.userId == userId)
+
   override def addPlacesToVisitItems(placesToVisit: PlacesToVisit): Unit = {
     currentId = currentId + 1
     placesToVisit.copy(itemId = Some(currentId))

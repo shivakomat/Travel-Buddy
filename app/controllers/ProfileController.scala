@@ -74,9 +74,24 @@ class ProfileController @Inject() (cache: DefaultSyncCacheApi) extends Controlle
   }
 
   def createFlightItemPage(tripId: Int): Action[AnyContent] = AuthenticatedAction { request =>
+    Ok(views.html.createFlightItem(getUserId(request.session), tripId))
+  }
+
+  def flightItemsPage(tripId: Int): Action[AnyContent] = AuthenticatedAction { request =>
     Ok(views.html.flightItem(getUserId(request.session), tripId))
   }
 
+  def stayItemsPage(tripId: Int): Action[AnyContent] = AuthenticatedAction { request =>
+    Ok(views.html.stayItemsList(getUserId(request.session), tripId))
+  }
+
+  def foodPlacesItemsPage(tripId: Int): Action[AnyContent] = AuthenticatedAction { request =>
+    Ok(views.html.foodPlacesList(getUserId(request.session), tripId))
+  }
+
+  def placesToVisitItemsPage(tripId: Int): Action[AnyContent] = AuthenticatedAction { request =>
+    Ok(views.html.placesToVisitList(getUserId(request.session), tripId))
+  }
 
 }
 

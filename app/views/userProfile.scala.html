@@ -2,8 +2,8 @@
 @(profileData: JsValue, userId: Int)
 
 @main("Travel Buddy - Profile Page", "my-traveller-profile") {
-    <div class="container-fluid offset-1">
-        <div class="row mt-5 offset-0 p-1">
+    <div class="container-fluid">
+        <div class="row mt-5 offset-1 p-1">
             <div class="col-lg-3">
                 <div class="card col-lg-7">
                     <img class="card-img-top" style="width: 200px; height:220px; margin: auto; padding-top: 20px" src="@routes.Assets.versioned("images/boy.svg")" alt="Card image cap">
@@ -11,17 +11,17 @@
                         <h5 class="card-title" >@((profileData \ "name").as[String])</h5>
 @*                        <a href="#" style="width: 100px; margin-left: 25px; margin-top: 10px;" class="btn btn-success">Connect</a>*@
                     </div>
-                    <div class="card-body">
-                        <h6><u>Travel XP</u></h6>
-                        <p class="mt-1"> -- out of 10 backpacks</p>
-                        <p class="mt-1"><b>Type:</b> -- blogger</p>
-                        <h6><u>About me</u></h6>
-                        <p class="mt-1"><b>Nationality:</b> -- </p>
-                        <p class="mt-1"><b>Current City:</b> -- </p>
-                        <p class="mt-1"><b>No of countries travelled:</b> -- </p>
-                        <p class="mt-1"><b>Favorite Places</b></p>
-                        <p class="mt-1">San Francisco, Paris, Reykjavik, Toronto, New york City</p>
-                    </div>
+@*                    <div class="card-body">*@
+@*                        <h6><u>Travel XP</u></h6>*@
+@*                        <p class="mt-1"> -- out of 10 backpacks</p>*@
+@*                        <p class="mt-1"><b>Type:</b> -- blogger</p>*@
+@*                        <h6><u>About me</u></h6>*@
+@*                        <p class="mt-1"><b>Nationality:</b> -- </p>*@
+@*                        <p class="mt-1"><b>Current City:</b> -- </p>*@
+@*                        <p class="mt-1"><b>No of countries travelled:</b> -- </p>*@
+@*                        <p class="mt-1"><b>Favorite Places</b></p>*@
+@*                        <p class="mt-1">San Francisco, Paris, Reykjavik, Toronto, New york City</p>*@
+@*                    </div>*@
                 </div>
             </div>
             <div class="col-lg-7">
@@ -35,7 +35,7 @@
                     </div>
 
                     <div class="row mt-5">
-                        <div class="col-lg-12">
+                        <div class="col-lg-8">
                             <table class="table table-hover">
                                 <thead>
                                     <tr>

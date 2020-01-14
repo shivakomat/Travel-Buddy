@@ -15,21 +15,21 @@ case class BucketItem(id: Int, bucketId: Int, itemName: String, itemSharableLink
 
 case class FlightItem(itemId: Option[Int] = None, itemName: String,
                       from: String, to: String,
-                      estimatedCost: Double, notes: String,
-                      shareableLink: String, airlines: String,
+                      estimatedCost: Double, notes: Option[String],
+                      shareableLink: Option[String], airlines: String,
                       tripId: Int, userId: Int)
 
 case class StayItem(itemId: Option[Int] = None, name: String, costPerNight: Double, reviewStars: Int,
-                    specificLocation: String, numberOfDaysToStay: Int, notes: String,
+                    specificLocation: Option[String], numberOfDaysToStay: Int, notes: Option[String],
                     shareableLink: String, tripPlaceId: Int, tripId: Int, userId: Int)
 
-case class FoodPlaceItem (itemId: Option[Int] = None, placeName: String, estimatedPrice : Double, cuisineType: String,
-                          reviewStars: Int, appetiteType: String, reservationRequired: Boolean,
-                          phoneNumber: Long, notes: String, shareableLink: String,
+case class FoodPlaceItem (itemId: Option[Int] = None, placeName: String, estimatedPrice :Option[Double], cuisineType: Option[String],
+                          reviewStars: Int, appetiteType: Option[String], reservationRequired: Option[Boolean],
+                          phoneNumber: Option[Long], notes: Option[String], shareableLink: String,
                           tripPlaceId: Int, tripId: Int, userId: Int)
 
-case class PlacesToVisit (itemId: Option[Int] = None, placeName: String, mapLink: String,
-                          anyFees: Double, notes: String, shareableLink: String,
+case class PlacesToVisit (itemId: Option[Int] = None, placeName: String, mapLink: Option[String],
+                          anyFees: Option[Double], notes: Option[String], shareableLink: Option[String],
                           tripPlaceId: Int, tripId: Int, userId: Int)
 
 

@@ -2,8 +2,7 @@
 
 @main("Travel Buddy - My Trips", "my-trips") {
     <!-- Page Content -->
-    <div class="container" data-ng-controller="tripsController as userTrip" data-ng-init="userTrip.getUserTrips(@userId)">
-        {{userTrip.userId}}
+    <div class="container-fluid" data-ng-controller="tripsController as userTrip" data-ng-init="userTrip.getUserTrips(@userId)">
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="mt-5 text-left">My Trips</h1>
