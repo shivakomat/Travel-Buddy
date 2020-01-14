@@ -1,45 +1,23 @@
 package scrappers
 
-import org.jsoup.Jsoup
+class TripAdvisor(url: String) extends BaseWebScrape (url){
 
-class TripAdvisor(url: String) {
-
-  private val thisDocument = Jsoup.connect(url).get()
-
-  def title: String = {
-    thisDocument
-      .title()
-  }
-
-  def duration: String = {
+  def tourDuration: String = {
     thisDocument.body().getElementsByAttribute("data-tab")
       .get(3).getAllElements.get(1).getElementsByTag("span").get(1).text()
   }
 
-  def departurePoint: String = {
+  def tourDeparturePoint: String = {
     thisDocument.body().getElementsByAttribute("data-tab")
       .get(3).getAllElements.get(1).getElementsByTag("span").get(0).text()
   }
 
-  def returnDetails: String = {
+  def tourReturnDetails: String = {
     thisDocument.body().getElementsByAttribute("data-tab")
       .get(3).getAllElements.get(1).getElementsByTag("span").get(2).text()
   }
 
-  def images: Seq[String] = {
-    var listOfImages = Seq.empty[String]
-    thisDocument.body().getElementsByTag("img")
-    .forEach (element => {
-      val imgLink = element.attr("src")
-      if(imgLink.contains("/media/")) {
-//         if(imgLink.contains("540x360") || imgLink.contains("-540x360/")) listOfImages = listOfImages ++ Seq(imgLink)
-        listOfImages = listOfImages ++ Seq(imgLink)
-      }
-    })
-    listOfImages
-  }
-
-  def price: String =
+  def tourPrice: String =
     thisDocument.body().getElementsByAttributeValueContaining("class", "mainPrice").text()
 
 }
@@ -67,8 +45,6 @@ object TripAdvisorTest extends App {
     val tripAdvisor = TripAdvisor(link)
     println(tripAdvisor.title)
     println(tripAdvisor.images)
-//    println(tripAdvisor.price)
-//    println(tripAdvisor.duration)
   })
 }
 
